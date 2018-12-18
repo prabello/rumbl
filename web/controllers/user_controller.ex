@@ -4,6 +4,7 @@ defmodule Rumbl.UserController do
   plug(:authenticate when action in [:index, :show])
   require Logger
 
+  @spec create(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def create(conn, %{"user" => user_params}) do
     changeset = User.registration_changeset(%User{}, user_params)
 
