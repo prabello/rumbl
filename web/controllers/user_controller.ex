@@ -1,6 +1,7 @@
 defmodule Rumbl.UserController do
   alias Rumbl.User
   use Rumbl.Web, :controller
+  plug(:authenticate when action in [:index, :show])
   require Logger
 
   def create(conn, %{"user" => user_params}) do
